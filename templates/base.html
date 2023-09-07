@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KryptoPigula</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+    </head>
+    
+<body>
+    {% include 'components/header.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% include 'components/footer.html' %}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+<style>
+    .zoom {
+        transition: transform .2s;
+    }
+
+    .zoom:hover {
+        transform: scale(1.02);
+    }
+
+    .card {
+        margin: 0.2px;
+    }
+
+    .card-deck {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-deck .card {
+        flex: 0.5 0 40%;
+        margin-right: 2px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+    }
+
+    .card-deck .d-flex {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-deck .d-flex .card {
+        flex: 1;
+    }
+
+    .card-image {
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .container {
+        max-width: 85%;
+    }
+
+    #sub-header {
+        line-height: 25px;
+    }
+    #sub-header, #sub-header .widget-title {
+        color: #3b3b3b;
+        font-family: 'Arial', Arial, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: capitalize;
+        letter-spacing: 0.3px;
+        line-height: 45px;
+    }
+    #sub-header {
+        background-color: rgba(254, 211, 25, 1);
+        background-position: top center;
+        background-repeat: repeat-x;
+        background-size: auto;
+        background-attachment: scroll;
+    }
+    .nav-link {
+        display: block;
+        padding: .5rem 1rem;
+      }
+
+    .nav-link-1 {
+        display: block;
+        padding: .5rem 1rem;
+        color: #000080 !important; /* changed color */
+    }
+      
+      a {
+        color: #111; /* changed color */
+        text-decoration: none;
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+      }
+
+      .small-card {
+        width: 23%; /* Adjust the width here */
+        margin: 0.5%; /* Add margin to prevent cards sticking together */
+    }
+
+    .small-card-image {
+        height: 70px; /* Adjust the height here */
+        object-fit: cover;
+    }
+
+    /* Reduce padding for 'Press Releases' section to have it closer to 'Join Our Community' */
+    .row.pt-4 {
+        padding-top: 2rem !important;
+    }
+
+    .card {
+        margin: 0.1rem; /* Reduce the margin to bring cards closer */
+        width: 100%;
+    }
+    
+    .card-image {
+        height: 70px;
+        object-fit: cover;
+    }
+    .submitpr {
+        color: #fff;
+        margin-bottom: 0.5rem;
+    }
+    .border-right {
+        border-right: 1px solid #ccc; /* Change the color to match your design */
+    }
+
+    .title-bar {
+        border-bottom: 1px solid #ccc; /* Change the color to match your design */
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .twitter-btn {
+        background-color: #1DA1F2;
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+    
+    .telegram-btn {
+        background-color: #0088cc;
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+    
+    .discord-btn {
+        background-color: #7289DA;
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+    
+    .news-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .news-content {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.5;
+      }
+      
+      .full-width-image {
+        width: 100%;
+        max-height: 400px; /* Adjust the maximum height as needed */
+      }
+      
+</style>
+
+</html>

@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% load short_description %}
+{% load custom_range from range_tags %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="card-deck">
+            <div class="card mb-4 shadow">
+                <a href="#" class="stretched-link">
+                    <img src="https://via.placeholder.com/350" class="card-img-top card-image zoom" alt="Sample news story">
+                    <div class="card-body card-content">
+                        <h5 class="card-title">Sample news story</h5>
+                        <p class="card-text">This is a sample news story...</p>
+                    </div>
+                </a>
+            </div>
+            <div class="d-flex flex-column">
+                <div class="card mb-4 shadow">
+                    <a href="#" class="stretched-link">
+                        <img src="https://via.placeholder.com/350" class="card-img-top card-image zoom" alt="Sample news story">
+                        <div class="card-body card-content">
+                            <h5 class="card-title">Sample news story</h5>
+                            <p class="card-text">This is a sample news story...</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card mb-4 shadow">
+                    <a href="#" class="stretched-link">
+                        <img src="https://via.placeholder.com/350" class="card-img-top card-image zoom" alt="Sample news story">
+                        <div class="card-body card-content">
+                            <h5 class="card-title">Sample news story</h5>
+                            <p class="card-text">This is a sample news story...</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-lg-8 pb-4 border-right">
+                <div class="title-bar">
+                    <h5 class="titlehome">
+                        <a href="/press-releases/">Komunikaty prasowe</a>
+                    </h5>
+                </div>
+                <div class="row">
+                    {% for press_release in press_releases %}
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card mb-4 shadow">
+                            <a href="{{ press_release.get_absolute_url }}" class="stretched-link">
+                                {% if press_release.thumbnail %}
+                                <img src="{{ press_release.thumbnail.url }}" class="card-img-top card-image zoom" alt="{{ press_release.title }}">
+                                {% else %}
+                                <img src="https://via.placeholder.com/150" class="card-img-top card-image zoom" alt="Placeholder image">
+                                {% endif %}
+                                <div class="card-body card-content">
+                                    <h5 class="card-title">{{ press_release.title }}</h5>
+                                    <p class="card-text">{{ press_release.content|safe }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title titlehome">
+                            Dołącz do naszej społeczności
+                        </h5>
+                        <div class="subpr">
+                            <a class="btn btn-block submitpr twitter-btn" href="https://twitter.com/yourusername">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                            <a class="btn btn-block submitpr telegram-btn" href="https://t.me/kryptopigula">
+                                <i class="fab fa-telegram-plane"></i> Telegram
+                            </a>
+                            <a class="btn btn-block submitpr discord-btn" href="https://discord.gg/yourusername">
+                                <i class="fab fa-discord"></i> Discord
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION B -->
+        <div class="row pt-4">
+            <div class="col-lg-8 pb-4 border-right">
+                <div class="title-bar">
+                    <h5 class="titlehome">
+                        <a href="/news/">News</a>
+                    </h5>
+                </div>
+                {% for single_news in news %}
+                <div class="card mb-4 shadow">
+                    <a href="{{ single_news.get_absolute_url }}" class="stretched-link">
+                        <div class="row no-gutters">
+                            <div class="col-lg-3">
+                                {% if single_news.thumbnail %}
+                                <img src="{{ single_news.thumbnail.url }}" class="card-img" alt="{{ single_news.title }}">
+                                {% else %}
+                                <img src="https://via.placeholder.com/150" class="card-img" alt="Placeholder image">
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ single_news.title }}</h5>
+                                    <p class="card-text">{{ single_news.content|short_description|safe }}</p>
+                                    <p class="card-text">{{ single_news.pub_date|date:"d M Y, H:i" }}</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <hr>
+                {% endfor %}
+                <div class="col-12 text-center mt-3">
+                    <a href="/news/" class="btn btn-primary">Load more</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="title-bar">
+                    <h5 class="titlehome">Artykuły</h5>
+                </div>
+                {% for editorial in editorials %}
+                <div class="card mb-4 shadow">
+                    <a href="{{ editorial.get_absolute_url }}">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
+                                {% if editorial.thumbnail %}
+                                <img src="{{ editorial.thumbnail.url }}" class="card-img" alt="{{ editorial.title }}">
+                                {% else %}
+                                <img src="https://via.placeholder.com/100" class="card-img" alt="{{ editorial.title }}">
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body py-2 px-3">
+                                    <h6 class="card-title mb-0">{{ editorial.title }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+
+<!-- SECTION C -->
+<div class="row">
+    <div class="col-lg-8 border-right">
+        <div class="title-bar">
+            <h5 class="titlehome">
+                <a href="/press-releases/">Filmy</a>
+            </h5>
+        </div>
+        <div class="row">
+            {% for analysis in crypto_analyses %}
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card mb-4 shadow">
+                    <a href="{{ analysis.link }}" class="stretched-link">
+                        {% if analysis.image %}
+                        <img src="{{ analysis.image.url }}" class="card-img-top card-image zoom" alt="{{ analysis.title }}">
+                        {% else %}
+                        <img src="https://via.placeholder.com/150" class="card-img-top card-image zoom" alt="Placeholder image">
+                        {% endif %}
+                        <div class="card-body card-content">
+                            <h5 class="card-title">{{ analysis.title }}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="title-bar">
+            <h5 class="titlehome">Reklamy</h5>
+        </div>
+        <!-- Wilki z Wiejskiej ad -->
+        <div class="card mb-4 shadow">
+            <a href="https://www.youtube.com/@wilkizwiejskiej/videos">
+                <div class="row no-gutters">
+                    <div class="col-lg-4">
+                        <img src="https://scontent.fktw4-1.fna.fbcdn.net/v/t39.30808-6/338375981_4125619330996504_4735343678668732402_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_ohc=Enhjk41r428AX8nynTv&_nc_ht=scontent.fktw4-1.fna&oh=00_AfDa1kmu_QOB-Y2cJgq7dsb71cohDRxB5eJxEaRuZxKbDw&oe=64AC9199" class="card-img" alt="Ad image">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card-body py-2 px-3">
+                            <h6 class="card-title mb-0">Wilki z Wiejskiej</h6>
+                            <p class="card-text">Kryptowaluty, edukacja, humor.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Travilabs.com ad -->
+        <div class="card mb-4 shadow">
+            <a href="https://travilabs.com/">
+                <div class="row no-gutters">
+                    <div class="col-lg-4">
+                        <img src="https://travilabs.com/img/travi.609f8865.png" class="card-img" alt="Ad image">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card-body py-2 px-3">
+                            <h6 class="card-title mb-0">travilabs.com</h6>
+                            <p class="card-text">Smart contracty, aplikacje, tokenizacja, strony internetowe, aplikacje mobilne, sklepy internetowe, automatyzacja, boty.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Third ad - Domestico.pl duplicate -->
+        <div class="card mb-4 shadow">
+            <a href="#">
+                <div class="row no-gutters">
+                    <div class="col-lg-4">
+                        <img src="https://domestico.pl/wp-content/uploads/2023/02/photo_2023-02-06_11-08-49-2.jpg.webp" class="card-img" alt="Ad image">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card-body py-2 px-3">
+                            <h6 class="card-title mb-0">Domestico.pl</h6>
+                            <p class="card-text">Oferujemy szeroki wybór profesjonalnej chemii gospodarczej oraz karm dla zwierząt.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1>{{ press_release.title }}</h1>
+        {% if press_release.thumbnail %}
+        <img src="{{ press_release.thumbnail.url }}" class="card-img-top card-image zoom" alt="{{ press_release.title }}">
+        {% endif %}
+        <p>{{ press_release.content|safe }}</p>
+    </div>
+{% endblock %}

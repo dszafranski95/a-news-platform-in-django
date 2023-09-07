@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1 class="news-title">{{ news.title }}</h1>
+        {% if news.thumbnail %}
+        <img src="{{ news.thumbnail.url }}" class="card-img-top card-image zoom full-width-image" alt="{{ news.title }}">
+        {% endif %}
+        <p class="news-content">{{ news.content|safe }}</p>
+        <p>Przeczytano {{ news.views }} razy.</p>
+    </div>
+{% endblock %}
